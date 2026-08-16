@@ -231,20 +231,20 @@ export const site = {
   },
 
   /* ── Venue ─────────────────────────────────────────────────────────────── */
-  venue: {
+  /*venue: {
     heading: "Seoul, Korea",
     body: [
       "URGE-CC is held as part of HPC Asia 2027 in Seoul, Republic of Korea. The workshop runs as a full-day session within the main conference programme.",
       "Registration, accommodation, and visa information are handled by the main conference. Details will be linked here once the HPC Asia 2027 site is live.",
     ],
-    /** Shown as a labelled list next to the copy. */
+    
     details: [
       { label: "City", value: "Seoul, Republic of Korea" },
       { label: "Venue", value: "TBA" },
       { label: "Conference dates", value: "TBA" },
       { label: "Registration", value: "Via HPC Asia 2027" },
     ],
-  },
+  },*/
 
   /* ── Alignment statement (footer band) ─────────────────────────────────── */
   /*alignment: {

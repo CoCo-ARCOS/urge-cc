@@ -305,45 +305,7 @@ import { site } from "../site.config";
       </div>
     </Section>
 
-    {/* ── Venue ─────────────────────────────────────────────────────────── */}
-    <Section id="venue" eyebrow="Venue" heading={site.venue.heading}>
-      <div class="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
-        <div data-reveal>
-          {
-            site.venue.body.map((paragraph) => (
-              <p class="mt-5 text-lg leading-relaxed text-ink-600 first:mt-0 dark:text-ink-300">
-                {paragraph}
-              </p>
-            ))
-          }
-          <a
-            href={site.conference.url}
-            class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-urgent-600 dark:text-urgent-400"
-          >
-            {site.conference.name} conference site
-            <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-
-        <dl
-          class="divide-y divide-ink-200 rounded-2xl border border-ink-200 dark:divide-ink-800 dark:border-ink-800"
-          data-reveal
-        >
-          {
-            site.venue.details.map((detail) => (
-              <div class="flex items-baseline justify-between gap-6 px-6 py-4">
-                <dt class="font-mono text-xs tracking-[0.12em] text-ink-400 uppercase">
-                  {detail.label}
-                </dt>
-                <dd class="text-right font-medium text-ink-900 dark:text-white">
-                  {detail.value}
-                </dd>
-              </div>
-            ))
-          }
-        </dl>
-      </div>
-    </Section>
+    
 
   </main>
 
