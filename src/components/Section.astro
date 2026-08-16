@@ -1,0 +1,49 @@
+---
+/**
+ * Shared section shell: anchor id, eyebrow label, heading and optional lead.
+ * Keeps vertical rhythm and heading styles identical across the page.
+ */
+interface Props {
+  id: string;
+  eyebrow: string;
+  heading: string;
+  lead?: string;
+  /** Tinted background band, used to separate adjacent sections. */
+  tinted?: boolean;
+  class?: string;
+}
+
+const { id, eyebrow, heading, lead, tinted = false, class: cls = "" } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={[
+    "scroll-mt-24 py-20 sm:py-28",
+    tinted && "bg-ink-50 dark:bg-ink-900/40",
+    cls,
+  ]}
+>
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="max-w-3xl" data-reveal>
+      <p class="eyebrow dark:text-urgent-400">{eyebrow}</p>
+      <h2
+        class="mt-3 text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl dark:text-white"
+      >
+        {heading}
+      </h2>
+      {
+        lead && (
+          <p class="mt-5 text-lg leading-relaxed text-ink-600 dark:text-ink-300">
+            {lead}
+          </p>
+        )
+      }
+    </div>
+
+    {/* Sections with no lead paragraph need less air under the heading. */}
+    <div class:list={[lead ? "mt-14" : "mt-10"]}>
+      <slot />
+    </div>
+  </div>
+</section>

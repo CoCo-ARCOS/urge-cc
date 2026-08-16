@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/* Class-based dark mode (toggled by the button in the header). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Design tokens. Change these to re-skin the whole site.
+   ─────────────────────────────────────────────────────────────────────────── */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Neutral — deep navy ink */
+  --color-ink-50: #f4f7fb;
+  --color-ink-100: #e4eaf3;
+  --color-ink-200: #c6d1e3;
+  --color-ink-300: #97a8c4;
+  --color-ink-400: #6a7d9e;
+  --color-ink-500: #4c5e7c;
+  --color-ink-600: #3a4a63;
+  --color-ink-700: #2a3852;
+  --color-ink-800: #1a2438;
+  --color-ink-900: #0e1626;
+  --color-ink-950: #060b14;
+
+  /* Accent — urgency */
+  --color-urgent-50: #fff2ee;
+  --color-urgent-100: #ffe0d7;
+  --color-urgent-300: #ff9d80;
+  --color-urgent-400: #ff7a56;
+  --color-urgent-500: #ff5a36;
+  --color-urgent-600: #e8431f;
+  --color-urgent-700: #bd3115;
+
+  /* Continuum tier accents — used by the hero glow and the skyline lights */
+  --color-tier-edge: #14b8a6;
+  --color-tier-fog: #22a3c9;
+  --color-tier-cloud: #3b82f6;
+  --color-tier-hpc: #6366f1;
+}
+
+/* ───────────────────────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+  /* Keep anchored sections clear of the sticky header. */
+  scroll-padding-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Section eyebrow: small caps label above each heading. */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-urgent-600);
+}
+
+/* Reveal-on-scroll, progressively enhanced by src/scripts/reveal.ts. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   The hero is dark in both themes, so while the header is still over it
+   (`.at-top`) its contents are forced light regardless of the active theme.
+   The scroll handler in Header.astro adds and removes the class.
+   ─────────────────────────────────────────────────────────────────────────── */
+#site-header.at-top {
+  .brand {
+    color: #fff;
+  }
+  .brand-sub {
+    color: var(--color-ink-300);
+  }
+  .nav-link,
+  .icon-btn {
+    color: color-mix(in srgb, #fff 82%, transparent);
+  }
+  .nav-link:hover,
+  .icon-btn:hover {
+    color: #fff;
+    background-color: color-mix(in srgb, #fff 14%, transparent);
+  }
+  .nav-link[aria-current="true"] {
+    color: var(--color-urgent-400);
+  }
+  .cta {
+    background-color: #fff;
+    color: var(--color-ink-900);
+  }
+  .cta:hover {
+    background-color: var(--color-urgent-500);
+    color: #fff;
+  }
+}
+
+/* A packet travelling edge → HPC along the continuum rail. */
+@keyframes urge-travel {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  8%,
+  92% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .urge-packet {
+    animation: urge-travel 4.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+}

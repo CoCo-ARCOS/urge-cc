@@ -1,0 +1,209 @@
+---
+/**
+ * Seoul skyline used as the hero backdrop.
+ *
+ * Drawn as an inline SVG so it needs no image asset, scales to any width, and
+ * recolours with the design tokens. Landmarks, front to back: the 63 Building
+ * on Yeouido, N Seoul Tower on Namsan, and Lotte World Tower in Jamsil, with
+ * the Han River and a bridge across the foreground.
+ *
+ * To use a photograph instead, set `hero.background: "photo"` in site.config.ts.
+ */
+
+interface Props {
+  class?: string;
+}
+const { class: cls = "h-full w-full" } = Astro.props;
+
+const GROUND = 470; // baseline the buildings stand on
+const RIVER = 470; // top of the Han River band
+
+/** Mid-distance towers. { x, w, h } — h measured up from GROUND. */
+const mid = [
+  { x: 0, w: 52, h: 110 }, { x: 58, w: 36, h: 70 }, { x: 100, w: 44, h: 145 },
+  { x: 150, w: 30, h: 88 }, { x: 186, w: 58, h: 120 }, { x: 250, w: 34, h: 96 },
+  { x: 290, w: 46, h: 170 }, { x: 342, w: 28, h: 74 }, { x: 376, w: 50, h: 130 },
+  { x: 432, w: 38, h: 92 }, { x: 476, w: 42, h: 112 }, { x: 524, w: 30, h: 68 },
+  { x: 560, w: 54, h: 150 }, { x: 620, w: 36, h: 86 }, { x: 662, w: 44, h: 124 },
+  { x: 712, w: 32, h: 78 }, { x: 750, w: 56, h: 160 }, { x: 812, w: 34, h: 94 },
+  { x: 852, w: 46, h: 118 }, { x: 904, w: 30, h: 72 }, { x: 940, w: 52, h: 140 },
+  { x: 998, w: 38, h: 88 }, { x: 1042, w: 44, h: 126 }, { x: 1092, w: 28, h: 70 },
+  { x: 1126, w: 50, h: 152 }, { x: 1236, w: 36, h: 84 }, { x: 1282, w: 48, h: 132 },
+  { x: 1336, w: 32, h: 76 }, { x: 1374, w: 54, h: 146 }, { x: 1434, w: 36, h: 90 },
+  { x: 1476, w: 46, h: 116 }, { x: 1528, w: 30, h: 66 }, { x: 1564, w: 56, h: 138 },
+];
+
+/** Near, darker rooftops that overlap the mid layer. */
+const near = [
+  { x: -10, w: 70, h: 64 }, { x: 70, w: 54, h: 82 }, { x: 132, w: 62, h: 56 },
+  { x: 204, w: 48, h: 74 }, { x: 260, w: 66, h: 60 }, { x: 334, w: 52, h: 86 },
+  { x: 394, w: 60, h: 54 }, { x: 462, w: 46, h: 78 }, { x: 516, w: 68, h: 62 },
+  { x: 592, w: 50, h: 88 }, { x: 650, w: 58, h: 56 }, { x: 716, w: 44, h: 72 },
+  { x: 768, w: 64, h: 60 }, { x: 840, w: 52, h: 84 }, { x: 900, w: 60, h: 54 },
+  { x: 968, w: 46, h: 76 }, { x: 1022, w: 66, h: 62 }, { x: 1096, w: 50, h: 86 },
+  { x: 1154, w: 58, h: 56 }, { x: 1230, w: 44, h: 70 }, { x: 1288, w: 64, h: 64 },
+  { x: 1360, w: 52, h: 82 }, { x: 1420, w: 60, h: 54 }, { x: 1488, w: 46, h: 76 },
+  { x: 1542, w: 66, h: 62 },
+];
+
+/* Lit windows, scattered with a fixed seed so every build is identical. */
+let seed = 20270101;
+const rand = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+
+const windows: { x: number; y: number }[] = [];
+for (const b of mid) {
+  const cols = Math.max(1, Math.floor((b.w - 8) / 13));
+  const rows = Math.max(1, Math.floor((b.h - 14) / 17));
+  for (let c = 0; c < cols; c++) {
+    for (let r = 0; r < rows; r++) {
+      if (rand() > 0.84) {
+        windows.push({
+          x: b.x + 6 + c * 13,
+          y: GROUND - b.h + 12 + r * 17,
+        });
+      }
+    }
+  }
+}
+---
+
+<svg
+  class={cls}
+  viewBox="0 0 1600 520"
+  preserveAspectRatio="xMidYMax slice"
+  role="img"
+  aria-label="Illustrated skyline of Seoul at dusk, with N Seoul Tower on Namsan, Lotte World Tower, and the Han River."
+>
+  <defs>
+    <linearGradient id="sk-far" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c3f66" />
+      <stop offset="100%" stop-color="#182545" />
+    </linearGradient>
+    <linearGradient id="sk-mid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1d2c4a" />
+      <stop offset="100%" stop-color="#111c33" />
+    </linearGradient>
+    <linearGradient id="sk-river" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.30" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.02" />
+    </linearGradient>
+    {/* Fades the whole illustration out toward the top of the hero. */}
+    <linearGradient id="sk-fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0" />
+      <stop offset="34%" stop-color="#fff" stop-opacity="0.55" />
+      <stop offset="72%" stop-color="#fff" stop-opacity="1" />
+    </linearGradient>
+    <mask id="sk-mask">
+      <rect width="1600" height="520" fill="url(#sk-fade)" />
+    </mask>
+  </defs>
+
+  <g mask="url(#sk-mask)">
+    {/* ── Bukhansan ridge, far behind the city ───────────────────────────── */}
+    <path
+      fill="url(#sk-far)"
+      opacity="0.75"
+      d="M0 336 L118 300 L196 322 L300 262 L362 292 L432 252 L522 300 L604 274
+         L706 312 L802 284 L900 302 L1002 260 L1102 296 L1204 270 L1322 306
+         L1424 278 L1522 312 L1600 292 L1600 470 L0 470 Z"
+    />
+
+    {/* ── Namsan, with N Seoul Tower on the summit ───────────────────────── */}
+    <path
+      fill="url(#sk-far)"
+      d="M296 470 Q382 322 470 302 Q560 322 646 470 Z"
+    />
+    <g fill="#38507d">
+      <rect x="458" y="292" width="24" height="12" rx="2"></rect>
+      <path d="M463 296 L465.5 218 L474.5 218 L477 296 Z"></path>
+      <path d="M454 218 Q470 206 486 218 L483 232 Q470 240 457 232 Z"></path>
+      <rect x="468.5" y="196" width="3" height="24" rx="1.5"></rect>
+    </g>
+    <circle cx="470" cy="193" r="3" fill="var(--color-urgent-500)">
+      <animate
+        attributeName="opacity"
+        values="1;0.15;1"
+        dur="2.6s"
+        repeatCount="indefinite"></animate>
+    </circle>
+    <rect x="457" y="222" width="26" height="2.5" fill="#f2b880" opacity="0.6"
+    ></rect>
+
+    {/* ── Mid-distance city ──────────────────────────────────────────────── */}
+    <g fill="url(#sk-mid)">
+      {mid.map((b) => (
+        <rect x={b.x} y={GROUND - b.h} width={b.w} height={b.h} />
+      ))}
+    </g>
+
+    {/* Lit windows */}
+    <g fill="#f7c98f" opacity="0.65">
+      {windows.map((w) => (
+        <rect x={w.x} y={w.y} width="4" height="6" rx="0.5" />
+      ))}
+    </g>
+
+    {/* ── 63 Building, Yeouido — slanted crown ───────────────────────────── */}
+    <g>
+      <path fill="#16223c" d="M232 470 L232 322 L274 300 L274 470 Z"></path>
+      <path
+        fill="#f2b880"
+        opacity="0.22"
+        d="M236 470 L236 326 L270 308 L270 470 Z"></path>
+    </g>
+
+    {/* ── Lotte World Tower, Jamsil ──────────────────────────────────────── */}
+    <g>
+      <path
+        fill="#16223c"
+        d="M1168 470 L1177 156 Q1190 120 1203 156 L1212 470 Z"></path>
+      <path
+        stroke="#f2b880"
+        stroke-opacity="0.35"
+        stroke-width="1.5"
+        d="M1190 150 L1190 470"></path>
+      <g fill="#f2b880" opacity="0.4">
+        <rect x="1180" y="210" width="20" height="3"></rect>
+        <rect x="1178" y="268" width="24" height="3"></rect>
+        <rect x="1175" y="326" width="30" height="3"></rect>
+        <rect x="1173" y="384" width="34" height="3"></rect>
+      </g>
+      <circle cx="1190" cy="130" r="2.5" fill="var(--color-tier-edge)">
+        <animate
+          attributeName="opacity"
+          values="1;0.2;1"
+          dur="3.4s"
+          repeatCount="indefinite"></animate>
+      </circle>
+    </g>
+
+    {/* ── Near rooftops ──────────────────────────────────────────────────── */}
+    <g fill="#0a1324">
+      {near.map((b) => (
+        <rect x={b.x} y={GROUND - b.h} width={b.w} height={b.h} />
+      ))}
+    </g>
+
+    {/* ── Han River ──────────────────────────────────────────────────────── */}
+    <rect x="0" y={RIVER} width="1600" height="50" fill="url(#sk-river)"></rect>
+    <g stroke="#8ab4f8" stroke-opacity="0.22" stroke-linecap="round">
+      <path d="M60 486 H210 M300 494 H430 M520 482 H640 M760 498 H900
+               M980 486 H1120 M1230 496 H1360 M1420 484 H1560"></path>
+    </g>
+    {/* Tower reflections */}
+    <g fill="#f2b880" opacity="0.12">
+      <rect x="1184" y={RIVER} width="12" height="44"></rect>
+      <rect x="248" y={RIVER} width="10" height="34"></rect>
+    </g>
+
+    {/* Bridge across the Han */}
+    <g stroke="#0a1120" stroke-width="4">
+      <path d="M700 478 H1600"></path>
+    </g>
+    <g stroke="#0a1120" stroke-width="3">
+      <path
+        d="M760 478 V506 M880 478 V506 M1000 478 V506 M1120 478 V506
+           M1240 478 V506 M1360 478 V506 M1480 478 V506"></path>
+    </g>
+  </g>
+</svg>
