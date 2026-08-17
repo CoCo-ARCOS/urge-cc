@@ -87,7 +87,6 @@ export const site = {
     { id: "dates", label: "Dates" },
     { id: "submission", label: "Submission" },
     { id: "committee", label: "Committee" },
-    { id: "venue", label: "Venue" },
   ],
 
   /* ── Hero fact strip ───────────────────────────────────────────────────── */
