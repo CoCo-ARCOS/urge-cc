@@ -173,9 +173,9 @@ export const site = {
     heading: "Important dates",
     note: "All deadlines are 23:59 AoE (Anywhere on Earth). Dates are provisional until the workshop is confirmed in the HPC Asia 2027 programme.",
     items: [
-      { label: "Paper submission deadline", date: "TBA" },
-      { label: "Notification of acceptance", date: "TBA" },
-      { label: "Camera-ready version due", date: "TBA" },
+      { label: "Paper submission deadline", date: "October 31, 2026" },
+      { label: "Notification of acceptance", date: "November 28, 2026" },
+      { label: "Camera-ready version due", date: "December 20, 2026" },
       { label: "Workshop day", date: "TBA", highlight: true },
     ],
   },
@@ -217,13 +217,50 @@ export const site = {
 
   /* ── People ────────────────────────────────────────────────────────────── */
   committee: {
-    heading: "Organising committee",
+    heading: "Workshop chairs",
     lead: "Get in touch with any of the organisers with questions about the workshop.",
-    /** Add or remove entries freely — the grid reflows. */
+    /**
+     * Add or remove entries freely — the grid reflows (2×2 at four entries).
+     *
+     * `photo` — a filename in `src/assets/organisers/`. Astro crops and resizes
+     *   it, so any reasonably square headshot works. Leave "" and the card
+     *   falls back to the person's initials.
+     * `email` — shown as a mailto link. Leave "" to omit the line.
+     * `url`   — personal or group homepage. "#" or "" means no link.
+     */
     organisers: [
-      { name: "TBA", role: "Workshop chair", affiliation: "TBA", url: "#" },
-      { name: "TBA", role: "Workshop chair", affiliation: "TBA", url: "#" },
-      { name: "TBA", role: "Programme chair", affiliation: "TBA", url: "#" },
+      {
+        name: "Prof. Jesus Carretero",
+        role: "",
+        affiliation: "Universidad Carlos III de Madrid",
+        photo: "jesus.png",
+        email: "jesus.carretero@uc3m.es",
+        url: "#",
+      },
+      {
+        name: "Dr. Dante D. Sanchez-Gallegos",
+        role: "",
+        affiliation: "Universidad Carlos III de Madrid",
+        photo: "dante.png",
+        email: "dantedomizzi.sanchez@uc3m.es",
+        url: "#",
+      },
+      {
+        name: "Prof. Manish Parashar",
+        role: "",
+        affiliation: "University of Utah",
+        photo: "manish.png",
+        email: "manish.parashar@utah.edu",
+        url: "#",
+      },
+      {
+        name: "Prof. Rafael Tolosana",
+        role: "",
+        affiliation: "Universidad de Zaragoza",
+        photo: "rafael.png",
+        email: "rafaelt@unizar.es",
+        url: "#",
+      },
     ],
     pcHeading: "Programme committee",
     /** Plain strings — "Name, Affiliation" reads best. */
@@ -254,10 +291,9 @@ export const site = {
 
   /* ── Contact & footer ──────────────────────────────────────────────────── */
   contact: {
-    email: "urge-cc@example.org",
+    email: "dantedomizzi.sanchez@uc3m.es",
     links: [
-      { label: "HPC Asia 2027", href: "#" },
-      { label: "Mailing list", href: "#" },
+      { label: "HPC Asia 2027", href: "https://hpcasia2027.org/2027/" }
     ],
   },
 };
