@@ -262,8 +262,24 @@ export const site = {
       },
     ],
     pcHeading: "Programme committee",
-    /** Plain strings — "Name, Affiliation" reads best. */
-    programme: ["TBA"],
+    /**
+     * Each member has name, affiliation, country (ISO 3166-1 alpha-2 for flag
+     * emoji), and optional email. Set email to "" to omit the link.
+     * Render as: 🇨🇦 Name, Affiliation · email@example.com
+     */
+    programme: [
+      { name: "TBA", affiliation: "", country: "", email: "" },
+      /*{ name: "Marco Rossi", affiliation: "Politecnico di Milano", country: "IT", email: "m.rossi@polimi.it" },
+      { name: "Sophie Dubois", affiliation: "INRIA", country: "FR", email: "sophie.dubois@inria.fr" },
+      { name: "Chen Wei", affiliation: "Tsinghua University", country: "CN", email: "chen.wei@tsinghua.edu.cn" },
+      { name: "Alex Johnson", affiliation: "University of Toronto", country: "CA", email: "ajohnson@cs.toronto.edu" },
+      { name: "Elena García", affiliation: "Universidad de Barcelona", country: "ES", email: "e.garcia@ub.edu" },*/
+    ] as Array<{
+      name: string;
+      affiliation: string;
+      country: string;
+      email: string;
+    }>,
   },
 
   /* ── Venue ─────────────────────────────────────────────────────────────── */

@@ -99,9 +99,33 @@ src/
     Hero.astro          ← banner; photo or illustrated skyline
     SeoulSkyline.astro  ← the illustrated skyline
     Section.astro       ← shared section shell (eyebrow + heading + lead)
+    OrganiserCard.astro ← one workshop chair: photo, name, affiliation, email
     Footer.astro
+  assets/organisers/    ← chair headshots, optimised at build time
   styles/global.css     ← design tokens, dark-mode variant, animations
 ```
+
+### Workshop chairs
+
+The chairs render as a two-column grid — four entries give the 2×2 layout.
+Each entry in `committee.organisers` takes:
+
+```ts
+{
+  name: "Prof. Jesus Carretero",
+  role: "",                                  // optional label above the name
+  affiliation: "Universidad Carlos III de Madrid",
+  photo: "jesus.png",                        // a file in src/assets/organisers/
+  email: "jesus.carretero@uc3m.es",          // "" to omit the line
+  url: "#",                                  // "#" or "" for no link
+}
+```
+
+Headshots go through Astro's image pipeline and are emitted as WebP (the
+current four come out at 2–4 KB each). They are cropped to a circle in CSS, so
+they need not be square — but keep the face near the centre, since the crop is
+centred. Leave `photo` as `""` and the card falls back to the person's
+initials, so the section still looks right before you have every photo.
 
 The sections, in order: **Motivation and objectives** (the motivation
 paragraphs, then the objectives as prose), **Topics of interest** (a numbered

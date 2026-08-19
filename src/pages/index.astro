@@ -277,7 +277,32 @@ import { site } from "../site.config";
           {
             site.committee.programme.map((member) => (
               <li class="border-l-2 border-ink-200 pl-3.5 dark:border-ink-800">
-                {member}
+                <span class="mr-2" aria-label={`${member.country}`}>
+                  {String.fromCodePoint(
+                    ...member.country
+                      .toUpperCase()
+                      .split("")
+                      .map((c) => 0x1f1a5 + c.charCodeAt(0))
+                  )}
+                </span>
+                <span class="font-medium">
+                  {member.name}
+                </span>
+                <span class="text-sm">
+                  , {member.affiliation}
+                </span>
+                {member.email && (
+                  <>
+                    {" "}
+                    ·{" "}
+                    <a
+                      href={`mailto:${member.email}`}
+                      class="text-urgent-600 underline underline-offset-2 hover:text-urgent-700 dark:text-urgent-400 dark:hover:text-urgent-300"
+                    >
+                      {member.email}
+                    </a>
+                  </>
+                )}
               </li>
             ))
           }

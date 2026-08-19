@@ -11,33 +11,34 @@
     sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* Neutral — deep navy ink */
-  --color-ink-50: #f4f7fb;
-  --color-ink-100: #e4eaf3;
-  --color-ink-200: #c6d1e3;
-  --color-ink-300: #97a8c4;
-  --color-ink-400: #6a7d9e;
-  --color-ink-500: #4c5e7c;
-  --color-ink-600: #3a4a63;
-  --color-ink-700: #2a3852;
-  --color-ink-800: #1a2438;
-  --color-ink-900: #0e1626;
-  --color-ink-950: #060b14;
+  /* Neutral — white through deep navy */
+  --color-ink-50: #f5f8fc;
+  --color-ink-100: #e3ebf6;
+  --color-ink-200: #c4d4e9;
+  --color-ink-300: #94accd;
+  --color-ink-400: #6685aa;
+  --color-ink-500: #496788;
+  --color-ink-600: #37526e;
+  --color-ink-700: #28405a;
+  --color-ink-800: #192940;
+  --color-ink-900: #0d1a2d;
+  --color-ink-950: #050d18;
 
-  /* Accent — urgency */
-  --color-urgent-50: #fff2ee;
-  --color-urgent-100: #ffe0d7;
-  --color-urgent-300: #ff9d80;
-  --color-urgent-400: #ff7a56;
-  --color-urgent-500: #ff5a36;
-  --color-urgent-600: #e8431f;
-  --color-urgent-700: #bd3115;
+  /* Accent — azure. Used for links, buttons, and section eyebrows.
+     Contrast-checked: 600 on white, 400 on ink-900/950, white on 500. */
+  --color-urgent-50: #eef5ff;
+  --color-urgent-100: #d8e8ff;
+  --color-urgent-300: #79b0fb;
+  --color-urgent-400: #4a90f5;
+  --color-urgent-500: #1c6fe4;
+  --color-urgent-600: #155ed0;
+  --color-urgent-700: #1149a3;
 
   /* Continuum tier accents — used by the hero glow and the skyline lights */
-  --color-tier-edge: #14b8a6;
-  --color-tier-fog: #22a3c9;
-  --color-tier-cloud: #3b82f6;
-  --color-tier-hpc: #6366f1;
+  --color-tier-edge: #38bdf8;
+  --color-tier-fog: #3b93f0;
+  --color-tier-cloud: #2563eb;
+  --color-tier-hpc: #3730c4;
 }
 
 /* ───────────────────────────────────────────────────────────────────────── */
