@@ -87,6 +87,7 @@ export const site = {
     { id: "dates", label: "Dates" },
     { id: "submission", label: "Submission" },
     { id: "committee", label: "Committee" },
+    { id: "contact", label: "Contact" },
   ],
 
   /* ── Hero fact strip ───────────────────────────────────────────────────── */
@@ -306,6 +307,7 @@ export const site = {
 
   /* ── Contact & footer ──────────────────────────────────────────────────── */
   contact: {
+    heading: "Get in touch",
     email: "dantedomizzi.sanchez@uc3m.es",
     links: [
       { label: "HPC Asia 2027", href: "https://hpcasia2027.org/2027/" }
