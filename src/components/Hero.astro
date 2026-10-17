@@ -76,7 +76,7 @@ const credit =
           {/* Scrim: darkens the photo enough for the headline to stay legible. */}
           <div
             class="absolute inset-0"
-            style={`background:linear-gradient(to bottom,rgba(6,11,20,${hero.photoScrim + 0.12}) 0%,rgba(6,11,20,${hero.photoScrim}) 45%,rgba(6,11,20,0.94) 100%)`}
+            style={`background:linear-gradient(to bottom,rgba(5,21,15,${hero.photoScrim + 0.12}) 0%,rgba(5,21,15,${hero.photoScrim}) 45%,rgba(5,21,15,0.94) 100%)`}
           />
         </>
       ) : (
@@ -131,7 +131,7 @@ const credit =
       </p>
 
       <h1
-        class="mt-8 max-w-4xl text-4xl leading-[1.08] font-extrabold tracking-tight text-balance break-words drop-shadow-[0_2px_18px_rgba(6,11,20,0.85)] sm:text-5xl lg:text-6xl"
+        class="mt-8 max-w-4xl text-4xl leading-[1.08] font-extrabold tracking-tight text-balance break-words drop-shadow-[0_2px_18px_rgba(5,21,15,0.85)] sm:text-5xl lg:text-6xl"
       >
         {site.title}
       </h1>
@@ -143,7 +143,7 @@ const credit =
       </p>
 
       <p
-        class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-200 text-pretty drop-shadow-[0_1px_12px_rgba(6,11,20,0.8)]"
+        class="mt-6 max-w-2xl text-lg leading-relaxed text-ink-200 text-pretty drop-shadow-[0_1px_12px_rgba(5,21,15,0.8)]"
       >
         {site.tagline}
       </p>
@@ -151,7 +151,7 @@ const credit =
       <div class="mt-10 flex flex-wrap items-center gap-3">
         <a
           href={site.cta.primary.href}
-          class="rounded-full bg-urgent-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-urgent-600"
+          class="rounded-full bg-urgent-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-urgent-700"
         >
           {site.cta.primary.label}
         </a>

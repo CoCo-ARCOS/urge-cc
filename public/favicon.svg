@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#0e1626"/>
-  <circle cx="7" cy="16" r="3" fill="#14b8a6"/>
-  <circle cx="16" cy="16" r="3" fill="#3b82f6"/>
-  <circle cx="25" cy="16" r="3" fill="#6366f1"/>
-  <path d="M10 16h3M19 16h3" stroke="#ff5a36" stroke-width="1.6" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="URGE-CC"><title>URGE-CC</title><rect x="0" y="0" width="120.0" height="120.0" rx="26" fill="#0D2B22"/><g transform="translate(10.385 10.385) scale(0.82692)"><path d="M64.53 8.20 A52 52 0 0 1 108.55 41.36 L103.88 43.16 A47 47 0 0 0 64.10 13.18 Z" fill="#F1F6F2"/><path d="M111.04 50.08 A52 52 0 0 1 91.29 101.53 L86.48 95.14 A44 44 0 0 0 103.19 51.60 Z" fill="#F1F6F2"/><path d="M83.61 106.33 A52 52 0 0 1 28.71 101.53 L35.33 92.74 A41 41 0 0 0 78.61 96.53 Z" fill="#F1F6F2"/><path d="M21.97 95.46 A52 52 0 0 1 11.45 41.36 L24.52 46.38 A38 38 0 0 0 32.21 85.92 Z" fill="#F1F6F2"/><path d="M15.43 33.22 A52 52 0 0 1 55.47 8.20 L56.69 22.14 A38 38 0 0 0 27.43 40.43 Z" fill="#12A160"/></g></svg>

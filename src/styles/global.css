@@ -60,34 +60,36 @@
   --font-mono: "JetBrains Mono Variable", ui-monospace, "SF Mono", Menlo,
     monospace;
 
-  /* Neutral — white through deep navy */
-  --color-ink-50: #f5f8fc;
-  --color-ink-100: #e3ebf6;
-  --color-ink-200: #c4d4e9;
-  --color-ink-300: #94accd;
-  --color-ink-400: #6685aa;
-  --color-ink-500: #496788;
-  --color-ink-600: #37526e;
-  --color-ink-700: #28405a;
-  --color-ink-800: #192940;
-  --color-ink-900: #0d1a2d;
-  --color-ink-950: #050d18;
+  /* Neutral — the logo's off-white (#F1F6F2) through its deep green (#0D2B22) */
+  --color-ink-50: #f1f6f2;
+  --color-ink-100: #e2ece6;
+  --color-ink-200: #c4d6cb;
+  --color-ink-300: #97b4a3;
+  --color-ink-400: #648676;
+  --color-ink-500: #4e705e;
+  --color-ink-600: #3a5848;
+  --color-ink-700: #294437;
+  --color-ink-800: #173a2e;
+  --color-ink-900: #0d2b22;
+  --color-ink-950: #05150f;
 
-  /* Accent — azure. Used for links, buttons, and section eyebrows.
-     Contrast-checked: 600 on white, 400 on ink-900/950, white on 500. */
-  --color-urgent-50: #eef5ff;
-  --color-urgent-100: #d8e8ff;
-  --color-urgent-300: #79b0fb;
-  --color-urgent-400: #4a90f5;
-  --color-urgent-500: #1c6fe4;
-  --color-urgent-600: #155ed0;
-  --color-urgent-700: #1149a3;
+  /* Accent — the logo green (#12A160 is 500). Used for links, buttons, and
+     section eyebrows. Contrast-checked: 600 on white (5.0:1), 400 on
+     ink-900/950 (6.7/8.2:1), white on 600 (5.0:1). White on 500 is only
+     3.3:1, so buttons with white text use 600, not 500. */
+  --color-urgent-50: #ebf8f1;
+  --color-urgent-100: #d1f0df;
+  --color-urgent-300: #6dd5a0;
+  --color-urgent-400: #3cc283;
+  --color-urgent-500: #12a160;
+  --color-urgent-600: #0d7f4b;
+  --color-urgent-700: #0a663c;
 
   /* Continuum tier accents — used by the hero glow and the skyline lights */
-  --color-tier-edge: #38bdf8;
-  --color-tier-fog: #3b93f0;
-  --color-tier-cloud: #2563eb;
-  --color-tier-hpc: #3730c4;
+  --color-tier-edge: #6dd5a0;
+  --color-tier-fog: #3cc283;
+  --color-tier-cloud: #12a160;
+  --color-tier-hpc: #0e7a5f;
 }
 
 /* ───────────────────────────────────────────────────────────────────────── */
@@ -144,6 +146,19 @@ body {
    (`.at-top`) its contents are forced light regardless of the active theme.
    The scroll handler in Header.astro adds and removes the class.
    ─────────────────────────────────────────────────────────────────────────── */
+/* Header logo: colour on light backgrounds, white in dark mode and over the hero. */
+#site-header .logo-on-dark {
+  display: none;
+}
+.dark #site-header .logo-on-light,
+#site-header.at-top .logo-on-light {
+  display: none;
+}
+.dark #site-header .logo-on-dark,
+#site-header.at-top .logo-on-dark {
+  display: block;
+}
+
 #site-header.at-top {
   .brand {
     color: #fff;
