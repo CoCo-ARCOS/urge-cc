@@ -173,9 +173,9 @@ export const site = {
     heading: "Important dates",
     note: "All deadlines are 23:59 AoE (Anywhere on Earth). Dates are provisional until the workshop is confirmed in the HPC Asia 2027 programme.",
     items: [
-      { label: "Paper submission deadline", date: "October 31, 2026" },
-      { label: "Notification of acceptance", date: "November 28, 2026" },
-      { label: "Camera-ready version due", date: "December 20, 2026" },
+      { label: "Paper submission deadline", date: "November 30, 2026" },
+      { label: "Notification of acceptance", date: "December 20, 2026" },
+      { label: "Camera-ready version due", date: "January 7, 2027" },
       { label: "Workshop day", date: "TBA", highlight: true },
     ],
   },
@@ -211,7 +211,7 @@ export const site = {
     },
 
     /** Set `href` to your submission system (EasyChair, HotCRP, …) when live. */
-    button: { label: "Submit via EasyChair", href: "#", disabled: true },
+    button: { label: "Submit via EasyChair", href: "https://easychair.org/conferences/?conf=urgecc26", disabled: false },
     disabledNote: "The submission site opens closer to the deadline.",
   },
 
@@ -241,7 +241,9 @@ export const site = {
         name: "Dr. Dante D. Sanchez-Gallegos",
         role: "",
         affiliation: "Universidad Carlos III de Madrid",
-        photo: "dante.png",
+        photo: "dante.jpg",
+        zoom: 1.5,
+        zoomOrigin: "50% 33%",
         email: "dantedomizzi.sanchez@uc3m.es",
         url: "#",
       },
@@ -308,7 +310,7 @@ export const site = {
   /* ── Contact & footer ──────────────────────────────────────────────────── */
   contact: {
     heading: "Get in touch",
-    email: "dantedomizzi.sanchez@uc3m.es",
+    email: "urgecc26@easychair.org",
     links: [
       { label: "HPC Asia 2027", href: "https://hpcasia2027.org/2027/" }
     ],

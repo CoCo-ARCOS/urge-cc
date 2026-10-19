@@ -14,6 +14,10 @@ interface Props {
     role?: string;
     affiliation: string;
     photo?: string;
+    /** Scales the photo inside its circle: below 1 zooms out, above 1 zooms in. */
+    zoom?: number;
+    /** CSS transform-origin for the zoom, e.g. "50% 30%" to centre on a face. */
+    zoomOrigin?: string;
     email?: string;
     url?: string;
   };
@@ -53,13 +57,20 @@ const hasLink = Boolean(person.url && person.url !== "#");
       photo ? (
         /* No width/height override: the sources are small, and forcing a
            square here would upscale them. CSS does the circular crop. */
-        <Image
-          src={photo}
-          alt={`Portrait of ${person.name}`}
-          quality={82}
-          loading="lazy"
-          class="h-20 w-20 rounded-full object-cover object-center sm:h-24 sm:w-24"
-        />
+        <div class="h-20 w-20 overflow-hidden rounded-full bg-white sm:h-24 sm:w-24">
+          <Image
+            src={photo}
+            alt={`Portrait of ${person.name}`}
+            quality={82}
+            loading="lazy"
+            class="h-full w-full object-cover object-center"
+            style={
+              person.zoom
+                ? `transform: scale(${person.zoom}); transform-origin: ${person.zoomOrigin ?? "center"}`
+                : undefined
+            }
+          />
+        </div>
       ) : (
         <span
           class="flex h-20 w-20 items-center justify-center rounded-full bg-ink-100 font-mono text-xl font-semibold text-ink-400 sm:h-24 sm:w-24 dark:bg-ink-900 dark:text-ink-500"
